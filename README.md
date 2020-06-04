@@ -1,42 +1,36 @@
 # vsn_transform
 
-Erlang parse transform to add '-vsn' attributes from (e.g.) git
+Erlang parse transform to add `vsn` attributes from e.g. Git info.
 
-## Using it
+## Usage
 
-Add it to your `rebar.config` file, as follows:
+Add the following to your `rebar.config` file:
 
     {deps, [
-        {vsn_transform, ".*",
-            {git, "git://github.com/electricimp/vsn_transform.git"}}
+        {vsn_transform, "1.0.0",
+            {git, "https://github.com/MiniclipPortugal/vsn_transform.git"}}
     ]}.
 
     {erl_opts, [
         {parse_transform, vsn_transform},
         {vsn_command, "git describe --tags"}
-    ]}
+    ]}.
 
 Obviously, you can change the command as needed. You might want to use `git
-rev-parse --short HEAD`, for example.
-
-At Electric Imp, we use a custom script that generates version strings that
-look like "138d21b - release-30.22 - Fri Oct 17 12:15:01 2014".
-
-We specify it as follows:
+rev-parse --short HEAD`, for example:
 
         {vsn_command, "$BASE_DIR/git-vsn --friendly"}
 
-...where `BASE_DIR` is an environment variable set in the top-level Makefile.
+... where `BASE_DIR` is an environment variable set in the top-level Makefile.
 
 ## Did it work?
 
 You can check it with the following:
 
-    lists:map(
-        fun({Mod, Path}) ->
-            Vsn = proplists:get_value(vsn, Mod:module_info(attributes)),
-            {Mod, Vsn} 
-        end, code:all_loaded()).
+    vsn_transform:vsn(Mod).
+
+where `Mod` is the module for which you want to obtain the `vsn_command`
+output.
 
 ## License
 
