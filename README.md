@@ -8,7 +8,7 @@ Add the following to your `rebar.config` file:
 
     {deps, [
         {vsn_transform, "1.0.0",
-            {git, "https://github.com/MiniclipPortugal/vsn_transform.git"}}
+            {git, "https://github.com/miniclip/vsn_transform.git"}}
     ]}.
 
     {erl_opts, [
