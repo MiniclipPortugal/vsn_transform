@@ -1,6 +1,14 @@
-{application, vsn_transform,
- [{description, "Apply git vsn to modules"},
-  {vsn, git},
-  {modules, []},
-  {registered, []},
-  {applications, [kernel, stdlib]}]}.
+{application, vsn_transform, [
+    {description, "Apply git vsn to modules"},
+    {vsn, git},
+    {registered, []},
+
+    {applications, [
+        % OTP dependencies
+        kernel,
+        stdlib
+        % External dependencies
+    ]},
+
+    {env, []}
+]}.
