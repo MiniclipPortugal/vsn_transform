@@ -1,6 +1,8 @@
 -module(vsn_transform).
 -export([parse_transform/2]).
 -export([vsn/1]).
+-ignore_xref(parse_transform/2).
+-ignore_xref(vsn/1).
 
 parse_transform(Forms, Options) ->
     Command = proplists:get_value(vsn_command, Options, undefined),
@@ -34,4 +36,4 @@ apply_vsn(false, _VsnAttr, _Forms) ->
     error(no_module_attribute).
 
 vsn(Mod) ->
-    proplists:get_value(vsn, Mod:module_info(attributes), undefined).
+    proplists:get_value(vsn, apply(Mod, module_info, [attributes]), undefined).

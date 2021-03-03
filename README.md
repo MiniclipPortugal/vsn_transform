@@ -1,4 +1,7 @@
-# vsn_transform
+# vsn_transform [![GitHub Actions CI][ci-img]][ci]
+
+[ci]: https://github.com/miniclip/vsn_transform
+[ci-img]: https://github.com/miniclip/vsn_transform/workflows/build/badge.svg
 
 Erlang parse transform to add `vsn` attributes from e.g. Git info.
 
