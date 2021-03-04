@@ -2,6 +2,9 @@
     {description, "Apply git vsn to modules"},
     {vsn, git},
     {registered, []},
+    {pkg_name, mc_vsn_transform},
+    {licenses, ["Apache License, Version 2.0"]},
+    {links, [{"GitHub", "https://github.com/miniclip/vsn_transform"}]},
 
     {applications, [
         % OTP dependencies
