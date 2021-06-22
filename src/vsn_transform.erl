@@ -6,11 +6,11 @@
 
 parse_transform(Forms, Options) ->
     Command = proplists:get_value(vsn_command, Options, undefined),
-    parse_transform(Forms, Command, Options).
+    parse_transform_(Forms, Command).
 
-parse_transform(Forms, undefined, _Options) ->
+parse_transform_(Forms, undefined) ->
     Forms;
-parse_transform(Forms, Command, _Options) ->
+parse_transform_(Forms, Command) ->
     Output = os:cmd(Command),
     % Strip trailing whitespace.
     Vsn = re:replace(Output, "[ \t\n]$", "", [global, {return, list}]),
